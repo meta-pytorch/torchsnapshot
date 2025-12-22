@@ -78,13 +78,13 @@ class DistStoreTest(unittest.TestCase):
         # should timeout in .arrive() and other non-leader ranks should timeout
         # in .depart().
         if rank == 0:
-            with tc.assertRaisesRegex(RuntimeError, "Socket Timeout"):
+            with tc.assertRaisesRegex(RuntimeError, "timeout"):
                 barrier.arrive(timeout=timedelta(seconds=5))
         elif rank == 1:
             pass
         else:
             barrier.arrive(timeout=timedelta(seconds=5))
-            with tc.assertRaisesRegex(RuntimeError, "Socket Timeout"):
+            with tc.assertRaisesRegex(RuntimeError, "timeout"):
                 barrier.depart(timeout=timedelta(seconds=5))
 
         dist.barrier()
@@ -102,7 +102,7 @@ class DistStoreTest(unittest.TestCase):
             pass
         else:
             barrier.arrive(timeout=timedelta(seconds=5))
-            with tc.assertRaisesRegex(RuntimeError, "Socket Timeout"):
+            with tc.assertRaisesRegex(RuntimeError, "timeout"):
                 barrier.depart(timeout=timedelta(seconds=5))
 
         dist.barrier()

@@ -64,24 +64,40 @@ class ReadObjectTest(unittest.TestCase):
         for foo_shard, bar_shard in zip(foo.local_shards(), bar.local_shards()):
             tc.assertFalse(torch.allclose(foo_shard.tensor, bar_shard.tensor))
 
-        with tempfile.TemporaryDirectory() as path:
+        # Create temp directory on rank 0 and broadcast path to all ranks
+        if dist.get_rank() == 0:
+            path = tempfile.mkdtemp()
+        else:
+            path = ""
+        path_list = [path]
+        dist.broadcast_object_list(path_list, src=0)
+        path = path_list[0]
+
+        try:
             snapshot = torchsnapshot.Snapshot.take(
                 path=path, app_state={"state": torchsnapshot.StateDict(foo=foo)}
             )
             snapshot.read_object("0/state/foo", obj_out=bar)
             baz = snapshot.read_object("0/state/foo")
 
-        for foo_shard, bar_shard in zip(foo.local_shards(), bar.local_shards()):
-            tc.assertTrue(torch.allclose(foo_shard.tensor, bar_shard.tensor))
+            for foo_shard, bar_shard in zip(foo.local_shards(), bar.local_shards()):
+                tc.assertTrue(torch.allclose(foo_shard.tensor, bar_shard.tensor))
 
-        tc.assertEqual(baz.shape, torch.Size([20_000, 128]))
+            tc.assertEqual(baz.shape, torch.Size([20_000, 128]))
 
-        gathered_foo_tensor = torch.empty(20_000, 128)
-        if dist.get_rank() == 0:
-            foo.gather(dst=0, out=gathered_foo_tensor)
-            tc.assertTrue(torch.allclose(baz, gathered_foo_tensor))
-        else:
-            foo.gather(dst=0, out=None)
+            gathered_foo_tensor = torch.empty(20_000, 128)
+            if dist.get_rank() == 0:
+                foo.gather(dst=0, out=gathered_foo_tensor)
+                tc.assertTrue(torch.allclose(baz, gathered_foo_tensor))
+            else:
+                foo.gather(dst=0, out=None)
+        finally:
+            # Clean up the temp directory on rank 0
+            dist.barrier()
+            if dist.get_rank() == 0:
+                import shutil
+
+                shutil.rmtree(path, ignore_errors=True)
 
     def test_read_sharded_tensor(self) -> None:
         lc = get_pet_launch_config(nproc=4)
