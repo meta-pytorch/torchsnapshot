@@ -16,7 +16,6 @@ import random
 import uuid
 
 import pytest
-
 import torch
 import torchsnapshot
 from torchsnapshot.io_types import ReadIO, WriteIO

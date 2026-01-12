@@ -29,13 +29,11 @@ from torch.distributed._shard.sharding_spec import ChunkShardingSpec
 from torch.distributed._shard.sharding_spec._internals import (
     _check_shard_metadata_pair_overlap,
 )
-
 from torchsnapshot.io_preparers.tensor import (
     tensor_copy,
     TensorBufferConsumer,
     TensorIOPreparer,
 )
-
 from torchsnapshot.io_types import BufferConsumer, Future, ReadReq, WriteReq
 from torchsnapshot.knobs import get_max_shard_size_bytes
 from torchsnapshot.manifest import Shard, ShardedTensorEntry, TensorEntry

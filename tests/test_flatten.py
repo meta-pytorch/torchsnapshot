@@ -13,7 +13,6 @@ from collections import OrderedDict
 from typing import Any, Dict
 
 import pytest
-
 from torchsnapshot.flatten import _encode, flatten, inflate
 from torchsnapshot.manifest import DictEntry, Entry, ListEntry, OrderedDictEntry
 

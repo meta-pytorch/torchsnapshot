@@ -17,7 +17,6 @@ import torch.distributed as dist
 import torch.distributed.launcher as pet
 import torchrec
 import torchsnapshot
-
 from fbgemm_gpu.split_embedding_configs import EmbOptimType
 from torchrec.datasets.utils import Batch
 from torchrec.distributed import ModuleSharder

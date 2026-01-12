@@ -13,7 +13,6 @@ import os
 import unittest
 
 import torch
-
 import torch.distributed as dist
 import torch.distributed.launcher as pet
 from torchsnapshot.pg_wrapper import PGWrapper

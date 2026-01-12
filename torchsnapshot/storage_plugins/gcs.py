@@ -26,10 +26,8 @@ import requests.exceptions
 import urllib3.exceptions
 from google.auth import default  # @manual
 from google.auth.transport.requests import AuthorizedSession  # @manual
-
 from google.resumable_media import common  # @manual
 from google.resumable_media.requests import ChunkedDownload, ResumableUpload  # @manual
-
 from torchsnapshot.io_types import ReadIO, StoragePlugin, WriteIO
 from torchsnapshot.memoryview_stream import MemoryviewStream
 
@@ -53,8 +51,7 @@ class GCSStoragePlugin(StoragePlugin):
         "https://www.googleapis.com/auth/devstorage.read_write",
     )
     UPLOAD_URL_TEMPLATE = (
-        "https://www.googleapis.com/upload/storage/v1/b/{bucket}/o?"
-        "uploadType=resumable"
+        "https://www.googleapis.com/upload/storage/v1/b/{bucket}/o?uploadType=resumable"
     )
     DOWNLOAD_URL_TEMPLATE = (
         "https://www.googleapis.com/download/storage/v1/b/"

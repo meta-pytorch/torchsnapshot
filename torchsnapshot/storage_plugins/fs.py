@@ -14,7 +14,6 @@ from typing import Any, Dict, Optional, Set
 
 import aiofiles
 import aiofiles.os
-
 from torchsnapshot.io_types import ReadIO, StoragePlugin, WriteIO
 
 

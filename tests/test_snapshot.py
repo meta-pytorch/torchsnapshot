@@ -13,7 +13,6 @@ from typing import Any, Dict, List
 from unittest.mock import MagicMock
 
 import pytest
-
 import torch
 from torchsnapshot import Snapshot, StateDict
 from torchsnapshot.manifest import PrimitiveEntry

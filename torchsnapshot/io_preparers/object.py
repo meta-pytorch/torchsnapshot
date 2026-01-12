@@ -16,7 +16,6 @@ from concurrent.futures import Executor
 from typing import Any, Generic, List, Optional, Tuple, TypeVar
 
 import torch
-
 from torchsnapshot.io_types import (
     BufferConsumer,
     BufferStager,
@@ -26,7 +25,6 @@ from torchsnapshot.io_types import (
     WriteReq,
 )
 from torchsnapshot.manifest import ObjectEntry
-
 from torchsnapshot.serialization import Serializer
 
 logger: logging.Logger = logging.getLogger(__name__)

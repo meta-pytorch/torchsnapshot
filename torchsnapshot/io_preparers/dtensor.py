@@ -10,7 +10,6 @@
 import itertools
 import logging
 from collections import defaultdict
-
 from typing import Callable, List, Optional, Sequence, Tuple
 
 import torch
@@ -22,7 +21,6 @@ from torch.distributed._shard.sharded_tensor import (
 from torch.distributed._shard.sharding_spec._internals import (
     _check_shard_metadata_pair_overlap,
 )
-
 from torch.distributed._tensor import (
     DeviceMesh,
     DTensor,
@@ -49,9 +47,7 @@ from torchsnapshot.io_preparers.sharded_tensor import (
     ShardedTensorBufferConsumer,
     ShardedTensorIOPreparer,
 )
-
 from torchsnapshot.io_preparers.tensor import TensorIOPreparer
-
 from torchsnapshot.io_types import Future, ReadReq, WriteReq
 from torchsnapshot.knobs import get_max_shard_size_bytes
 from torchsnapshot.manifest import DTensorEntry, Shard as ShardEntry

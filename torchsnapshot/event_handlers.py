@@ -43,7 +43,7 @@ def get_event_handlers() -> List[EventHandler]:
 
         if not isinstance(handler, EventHandler):
             raise RuntimeError(
-                f"The factory function for {({entry.value})} "
+                f"The factory function for { ({entry.value}) } "
                 "did not return a EventHandler object."
             )
         _log_handlers.append(handler)

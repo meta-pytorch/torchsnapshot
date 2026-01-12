@@ -15,7 +15,6 @@ from typing import Optional
 import deepspeed
 import torch
 import torch.distributed as dist
-
 from deepspeed import DeepSpeedEngine
 from torchsnapshot.tricks.deepspeed import patch_engine_to_use_torchsnapshot
 from transformers import OPTConfig, OPTModel

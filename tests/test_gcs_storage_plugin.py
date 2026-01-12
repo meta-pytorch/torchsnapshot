@@ -18,7 +18,6 @@ import uuid
 from typing import Generator
 
 import pytest
-
 import torch
 import torchsnapshot
 from torchsnapshot.io_types import ReadIO, WriteIO

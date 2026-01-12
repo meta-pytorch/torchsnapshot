@@ -11,16 +11,13 @@
 
 import os
 import sys
-
 from pathlib import Path
 from typing import Any, cast, Dict, List
 
 import pytest
-
 import torch
 import torch.distributed as dist
 import torchsnapshot
-
 from torch.distributed._shard.sharded_tensor import Shard, ShardedTensor
 from torchsnapshot.flatten import flatten
 from torchsnapshot.knobs import override_max_shard_size_bytes
@@ -40,7 +37,6 @@ from torchrec.distributed.embeddingbag import EmbeddingBagCollectionSharder
 from torchrec.distributed.planner import EmbeddingShardingPlanner, Topology
 from torchrec.distributed.planner.types import ParameterConstraints
 from torchrec.distributed.types import ShardingType
-
 from torchrec.models.dlrm import DLRM, DLRMTrain
 
 _EMBEDDING_DIM = 128

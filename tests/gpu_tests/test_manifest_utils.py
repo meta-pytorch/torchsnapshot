@@ -8,7 +8,6 @@
 # pyre-strict
 
 import torch
-
 import torch.distributed as dist
 from torch.testing._internal.common_utils import (
     instantiate_parametrized_tests,

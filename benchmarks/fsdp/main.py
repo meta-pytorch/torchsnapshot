@@ -57,7 +57,7 @@ def create_model() -> nn.Module:
     model_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
 
     rank_0_print(f"model parameters: {model_params:,}")
-    rank_0_print(f"model size: {model_size / (1024 ** 3):.3} GB")
+    rank_0_print(f"model size: {model_size / (1024**3):.3} GB")
 
     return FSDP(
         model,
@@ -130,8 +130,7 @@ def benchmark_torchsave(model: nn.Module, save_dir: str, benchmark_load: bool) -
         dist.barrier()
         end_ts = time.monotonic()
         rank_0_print(
-            f"Completed loading with torch.save.\n"
-            f"Took {end_ts - begin_ts:.2f} seconds."
+            f"Completed loading with torch.save.\nTook {end_ts - begin_ts:.2f} seconds."
         )
 
 

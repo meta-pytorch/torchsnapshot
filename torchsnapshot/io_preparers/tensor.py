@@ -18,7 +18,6 @@ from operator import mul
 from typing import Any, Callable, List, Optional, Tuple, TypeVar, Union
 
 import torch
-
 from torchsnapshot.io_types import (
     BufferConsumer,
     BufferStager,
@@ -28,7 +27,6 @@ from torchsnapshot.io_types import (
     WriteReq,
 )
 from torchsnapshot.manifest import ChunkedTensorEntry, TensorEntry
-
 from torchsnapshot.serialization import (
     BUFFER_PROTOCOL_SUPPORTED_DTYPES,
     dtype_to_element_size,

@@ -12,11 +12,8 @@ import unittest
 from typing import Generator, List, Set, Tuple
 
 import pytest
-
 import torch
-
 import torch.distributed as dist
-
 from _pytest.fixtures import SubRequest  # @manual
 from torch.distributed._shard import sharded_tensor
 from torch.distributed._shard.metadata import ShardMetadata
@@ -25,15 +22,12 @@ from torch.distributed._shard.sharding_spec import (
     EnumerableShardingSpec,
     ShardingSpec,
 )
-
 from torchsnapshot.io_preparer import (
     ShardedTensorIOPreparer,
     TensorBufferConsumer,
     TensorIOPreparer,
 )
-
 from torchsnapshot.knobs import override_max_shard_size_bytes
-
 from torchsnapshot.test_utils import run_with_pet_async, tensor_eq
 
 WORLD_SIZE = 4

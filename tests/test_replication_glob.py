@@ -11,7 +11,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import pytest
-
 import torch
 import torch.distributed as dist
 from torchsnapshot import Snapshot

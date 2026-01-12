@@ -125,8 +125,7 @@ def dtype_to_string(dtype: torch.dtype) -> str:
         return _DTYPE_TO_STRING[dtype]
     else:
         raise ValueError(
-            f"Unsupported dtype {dtype}. "
-            f"(Supported dtypes are: {ALL_SUPPORTED_DTYPES})"
+            f"Unsupported dtype {dtype}. (Supported dtypes are: {ALL_SUPPORTED_DTYPES})"
         )
 
 
@@ -135,8 +134,7 @@ def dtype_to_element_size(dtype: torch.dtype) -> int:
         return _DTYPE_TO_ELEMENT_SIZE[dtype]
     else:
         raise ValueError(
-            f"Unsupported dtype {dtype}. "
-            f"(Supported dtypes are: {ALL_SUPPORTED_DTYPES})"
+            f"Unsupported dtype {dtype}. (Supported dtypes are: {ALL_SUPPORTED_DTYPES})"
         )
 
 
@@ -148,7 +146,7 @@ def string_to_dtype(s: str) -> torch.dtype:
         return _STRING_TO_DTYPE[s]
     else:
         raise ValueError(
-            f"Unsupported dtype {s}. " f"(Supported dtypes are: {ALL_SUPPORTED_DTYPES})"
+            f"Unsupported dtype {s}. (Supported dtypes are: {ALL_SUPPORTED_DTYPES})"
         )
 
 

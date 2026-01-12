@@ -13,13 +13,10 @@ from dataclasses import dataclass
 from typing import Callable, List, Optional, Tuple, Union
 
 import torch
-
 from torchsnapshot.io_preparers.tensor import TensorIOPreparer
-
 from torchsnapshot.io_types import Future, ReadReq, WriteReq
 from torchsnapshot.knobs import get_max_chunk_size_bytes
 from torchsnapshot.manifest import ChunkedTensorEntry, Shard
-
 from torchsnapshot.serialization import dtype_to_string
 
 logger: logging.Logger = logging.getLogger(__name__)

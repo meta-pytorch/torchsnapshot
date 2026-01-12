@@ -8,7 +8,6 @@
 # pyre-strict
 
 import asyncio
-
 import copy
 import fnmatch
 import functools
@@ -19,7 +18,6 @@ import random
 import sys
 import traceback
 from asyncio import AbstractEventLoop
-
 from collections import defaultdict
 from datetime import timedelta
 from threading import Thread

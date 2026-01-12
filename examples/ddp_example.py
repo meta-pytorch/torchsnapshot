@@ -12,12 +12,10 @@ import uuid
 from typing import Dict, Optional
 
 import torch
-
 import torch.distributed as dist
 import torch.distributed.launcher as pet
 import torchsnapshot
 from torch.nn.parallel import DistributedDataParallel as DDP
-
 from torchsnapshot import Snapshot, Stateful
 
 NUM_EPOCHS = 4

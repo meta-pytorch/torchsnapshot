@@ -11,7 +11,6 @@ import os
 from pathlib import Path
 
 import pytest
-
 import torch
 import torch.distributed as dist
 from torch.distributed.fsdp import FullyShardedDataParallel as FSDP, StateDictType

@@ -12,11 +12,8 @@ from typing import Dict, Generator
 from unittest.mock import patch
 
 import pytest
-
 import yaml
-
 from _pytest.fixtures import SubRequest  # @manual
-
 from torchsnapshot.manifest import (
     DictEntry,
     DTensorEntry,

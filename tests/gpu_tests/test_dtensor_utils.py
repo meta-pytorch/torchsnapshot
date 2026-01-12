@@ -8,11 +8,9 @@
 # pyre-strict
 
 import torch
-
 import torch.distributed as dist
 from torch.distributed._shard import sharded_tensor
 from torch.distributed._shard.sharding_spec import ChunkShardingSpec
-
 from torch.distributed._tensor import DeviceMesh, distribute_tensor, Replicate, Shard
 from torch.testing._internal.common_utils import instantiate_parametrized_tests
 from torch.testing._internal.distributed._tensor.common_dtensor import (

@@ -11,9 +11,7 @@
 from typing import Tuple
 
 import pytest
-
 import torch
-
 from torchsnapshot.serialization import (
     ALL_SUPPORTED_DTYPES,
     BUFFER_PROTOCOL_SUPPORTED_DTYPES,

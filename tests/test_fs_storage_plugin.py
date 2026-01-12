@@ -10,13 +10,11 @@
 # pyre-ignore-all-errors[56]
 
 import io
-
 import logging
 import random
 from pathlib import Path
 
 import pytest
-
 import torch
 from torchsnapshot import Snapshot, StateDict
 from torchsnapshot.io_types import ReadIO, WriteIO

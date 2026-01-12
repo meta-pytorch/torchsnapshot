@@ -13,7 +13,6 @@ from collections import defaultdict
 from typing import Dict, List, Tuple
 
 from torchsnapshot.dtensor_utils import _ReplicatedShards
-
 from torchsnapshot.manifest_utils import (
     _get_replicated_ranks,
     is_container_entry,
@@ -22,7 +21,6 @@ from torchsnapshot.manifest_utils import (
 )
 
 from .knobs import is_sharded_tensor_elasticity_enabled_at_root_only
-
 from .manifest import (
     DTensorEntry,
     Entry,

@@ -11,7 +11,6 @@ import itertools
 from typing import List, Set
 
 import numpy as np
-
 from torchsnapshot.manifest import (
     DictEntry,
     DTensorEntry,

@@ -13,7 +13,6 @@ from pathlib import Path
 from typing import Generator, List
 
 import pytest
-
 import torch
 import torch.distributed as dist
 from _pytest.fixtures import SubRequest  # @manual
