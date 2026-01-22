@@ -22,10 +22,12 @@ from torchsnapshot.uvm_tensor import (
 @pytest.mark.cpu_and_gpu
 def test_uvm_tensor() -> None:
     if torch.cuda.is_available() and _UVM_TENSOR_AVAILABLE:
+        device = torch.device("cuda:0")
+        torch.cuda.set_device(device)
         uvm_tensor = torch.rand(
             (64, 64),
             out=new_managed_tensor(
-                torch.empty(0, dtype=torch.float32, device="cuda:0"),
+                torch.empty(0, dtype=torch.float32, device=device),
                 [64, 64],
             ),
         )
