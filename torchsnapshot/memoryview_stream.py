@@ -12,9 +12,7 @@ from typing import Optional
 
 
 class MemoryviewStream(io.IOBase):
-    # pyre-fixme[24]: Generic type `memoryview` expects 1 type parameter.
     def __init__(self, mv: memoryview) -> None:
-        # pyre-fixme[24]: Generic type `memoryview` expects 1 type parameter.
         self._mv: memoryview = mv.cast("b")
         self._pos = 0
 
@@ -40,7 +38,6 @@ class MemoryviewStream(io.IOBase):
         self._pos = newpos
         return b
 
-    # pyre-fixme[24]: Generic type `memoryview` expects 1 type parameter.
     def read1(self, size: int = -1) -> memoryview:
         """This is the same as read."""
         return self.read(size)

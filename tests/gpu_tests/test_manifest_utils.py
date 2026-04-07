@@ -32,7 +32,6 @@ WORLD_SIZE = 4
 class TestManifestUtils(DTensorTestBase):
     @parametrize("dtype", NCCL_SUPPORTED_DTYPES)
     @skip_if_lt_x_gpu(WORLD_SIZE)
-    # pyre-fixme[56]: While applying decorator
     #  `torch.testing._internal.distributed._tensor.common_dtensor.with_comms`: For 1st
     #  argument expected `(object) -> object` but got `(self: TestManifestUtils, dtype:
     #  dtype) -> Any`.
@@ -54,7 +53,6 @@ class TestManifestUtils(DTensorTestBase):
 
     @parametrize("dtype", NCCL_SUPPORTED_DTYPES)
     @skip_if_lt_x_gpu(WORLD_SIZE)
-    # pyre-fixme[56]: While applying decorator
     #  `torch.testing._internal.distributed._tensor.common_dtensor.with_comms`: For 1st
     #  argument expected `(object) -> object` but got `(self: TestManifestUtils, dtype:
     #  dtype) -> Any`.
@@ -77,6 +75,7 @@ class TestManifestUtils(DTensorTestBase):
         assert not is_partially_replicated_entry(entry=entry)
 
         # Only sharded
+        # pyrefly: ignore [missing-attribute]
         entry.dim_map = [0, 1]
         assert not is_partially_replicated_entry(entry=entry)
 

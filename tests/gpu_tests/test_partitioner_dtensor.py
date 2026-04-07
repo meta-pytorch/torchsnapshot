@@ -46,7 +46,6 @@ class TestPartitioner(DTensorTestBase):
     @parametrize("dtype", NCCL_SUPPORTED_DTYPES)
     @parametrize("enable_batcher", [True, False])
     @skip_if_lt_x_gpu(WORLD_SIZE)
-    # pyre-fixme[56]: While applying decorator
     #  `torch.testing._internal.distributed._tensor.common_dtensor.with_comms`: For 1st
     #  argument expected `(object) -> object` but got `(self: TestPartitioner, dtype:
     #  dtype, enable_batcher: bool) -> Coroutine[typing.Any, typing.Any, None]`.

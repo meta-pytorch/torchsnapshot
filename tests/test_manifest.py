@@ -779,6 +779,7 @@ def _update_local_manifest_with_merged_entries(
             ]
         )
     if "foo/corge" in local_manifest:
+        # pyrefly: ignore [unsupported-operation]
         merged_local_manifest["foo/corge"] = DTensorEntry(
             shards=[
                 Shard(
@@ -830,6 +831,7 @@ def _update_local_manifest_with_merged_entries(
             dim_map=[[0], [1]],
         )
     if "foo/grault" in local_manifest:
+        # pyrefly: ignore [unsupported-operation]
         merged_local_manifest["foo/grault"] = DTensorEntry(
             shards=[
                 Shard(

@@ -37,7 +37,6 @@ from torchsnapshot.manifest import NestedList
 from torchsnapshot.test_utils import tensor_eq
 
 WORLD_SIZE = 4
-# pyre-fixme[5]: Global expression must be annotated.
 _DEVICE_MESH = [
     list(range(WORLD_SIZE)),
     np.arange(WORLD_SIZE).reshape(2, 2).tolist(),
@@ -56,7 +55,6 @@ class TestDTensorIOPreparer(DTensorTestBase):
     @parametrize("mesh", _DEVICE_MESH)
     @parametrize("placements", _PLACEMENTS)
     @skip_if_lt_x_gpu(WORLD_SIZE)
-    # pyre-fixme[56]: While applying decorator `torch.testing._internal.distributed._...
     @with_comms
     async def test_dtensor_io_preparer(
         self,

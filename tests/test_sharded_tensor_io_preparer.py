@@ -40,7 +40,6 @@ def sharding_spec(shape: Tuple[int, int], request: SubRequest) -> ShardingSpec:
     """
     sharding_type, dim = request.param
     if sharding_type == "chunk":
-        # pyre-ignore
         return ChunkShardingSpec(
             dim=dim, placements=[f"rank:{rank}/cpu" for rank in range(WORLD_SIZE)]
         )

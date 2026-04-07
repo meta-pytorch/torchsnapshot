@@ -45,7 +45,6 @@ class TestDTensorUtils(DTensorTestBase):
         assert not is_sharded(dtensor)
         assert is_replicated_dtensor(dtensor)
 
-        # pyre-ignore
         spec = ChunkShardingSpec(
             dim=0,
             placements=[

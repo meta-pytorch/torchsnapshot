@@ -34,7 +34,7 @@ def s3_health_check() -> None:
     check passes.
     """
     try:
-        import boto3  # pyre-ignore  # @manual
+        import boto3  # @manual
 
         s3 = boto3.client("s3")
         data = b"hello"
@@ -42,7 +42,6 @@ def s3_health_check() -> None:
         s3.upload_fileobj(io.BytesIO(data), _TEST_BUCKET, key)
         s3.download_fileobj(_TEST_BUCKET, key, io.BytesIO())
     except Exception as e:
-        # pyre-ignore[29]
         pytest.skip(f"Skipping the test because s3 health check failed: {e}")
 
 

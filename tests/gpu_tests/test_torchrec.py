@@ -27,7 +27,6 @@ from torchsnapshot.test_utils import run_with_pet
 try:
     import torchrec
 except Exception as e:
-    # pyre-ignore
     pytest.skip(f"Failed to import torchrec due to {e}", allow_module_level=True)
 
 

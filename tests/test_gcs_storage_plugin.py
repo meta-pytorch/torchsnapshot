@@ -37,7 +37,7 @@ def gcs_health_check() -> None:
     try:
         from google.cloud import storage  # @manual  # pyre-ignore
 
-        bucket = storage.Client().bucket(_TEST_BUCKET)  # pyre-ignore
+        bucket = storage.Client().bucket(_TEST_BUCKET)
         blob = bucket.blob(str(uuid.uuid4()))
         with blob.open("w") as f:
             f.write("hello")
@@ -45,7 +45,6 @@ def gcs_health_check() -> None:
             f.read()
 
     except Exception as e:
-        # pyre-ignore[29]
         pytest.skip(f"Skipping the test because gcs health check failed: {e}")
 
 

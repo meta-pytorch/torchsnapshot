@@ -137,7 +137,6 @@ def test_non_flattenable_object(prefix: str) -> None:
 # test_flatten_inflate() was first introduced to ensure backward compatibility.
 # They can be removed once test_flatten_inflate() is merged.
 
-# pyre-ignore
 _OBJ = {
     "foo": 0,
     "bar": 1,

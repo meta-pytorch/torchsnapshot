@@ -273,6 +273,7 @@ class ChunkedTensorIOPreparerTest(unittest.TestCase):
         nonddp_foo = torch.nn.Linear(16, 1)
         nonddp_bar = torch.nn.Linear(16, 1)
         app_state: AppState = {"ddp": ddp_foo, "nonddp": nonddp_foo}
+        # pyrefly: ignore [missing-attribute]
         io_preparer.DEFAULT_MAX_CHUNK_SIZE_BYTES = 4
         snapshot = torchsnapshot.Snapshot.take(
             path=path,

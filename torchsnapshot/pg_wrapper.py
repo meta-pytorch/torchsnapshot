@@ -26,7 +26,6 @@ class PGWrapper:
 
     def __init__(self, pg: Optional[dist.ProcessGroup]) -> None:
         if pg is None and dist.is_initialized():
-            # pyre-ignore
             self.pg = dist.group.WORLD
         else:
             self.pg = pg

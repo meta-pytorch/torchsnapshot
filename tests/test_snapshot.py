@@ -179,7 +179,6 @@ def test_app_state_with_primitive_types(tmp_path: Path) -> None:
         bytes_key=None,
     )
 
-    # pyre-fixme[53]: Captured variable `snapshot` is not annotated.
     def _assert_primitive_entry_with_type(
         location_key: str, expected_type_name: str
     ) -> None:

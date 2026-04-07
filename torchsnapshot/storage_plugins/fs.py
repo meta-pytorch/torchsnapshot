@@ -33,7 +33,6 @@ class FSStoragePlugin(StoragePlugin):
             self._dir_cache.add(dir_path)
 
         async with aiofiles.open(path, "wb+") as f:
-            # pyre-ignore: memoryview is actually supported
             await f.write(write_io.buf)
 
     async def read(self, read_io: ReadIO) -> None:

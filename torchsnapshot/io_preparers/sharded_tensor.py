@@ -146,6 +146,7 @@ class ShardedTensorIOPreparer:
                 shard=shard.tensor,
                 offsets=shard.metadata.shard_offsets,
                 sizes=shard.metadata.shard_sizes,
+                # pyrefly: ignore [bad-argument-type]
                 dim=sharding_dim,
                 max_shard_sz_bytes=get_max_shard_size_bytes(),
             )
@@ -200,11 +201,13 @@ class ShardedTensorIOPreparer:
     ) -> Tuple[List[ReadReq], Future[Union[ShardedTensor, torch.Tensor]]]:
         # Note: in case obj_out is None, a Future[Tensor] will be returned
         if obj_out is None:
+            # pyrefly: ignore [bad-assignment]
             obj_out = ShardedTensorIOPreparer.empty_tensor_from_sharded_tensor_entry(
                 entry
             )
 
         global_shape = cls._get_global_shape(entry=entry)
+        # pyrefly: ignore [bad-argument-type]
         cls._validate_shape(global_shape=global_shape, obj_out=obj_out)
 
         if type(obj_out) == ShardedTensor:

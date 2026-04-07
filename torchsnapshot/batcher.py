@@ -136,6 +136,7 @@ class GPUBatchedBufferStager(BatchedBufferStager):
                 raise AssertionError(
                     "GPUBatchedBufferStager only supports GPU tensors."
                 )
+        # pyrefly: ignore [bad-override]
         self.byte_range_to_buffer_stager: Dict[Tuple[int, int], TensorBufferStager] = (
             cast(Dict[Tuple[int, int], TensorBufferStager], byte_range_to_buffer_stager)
         )

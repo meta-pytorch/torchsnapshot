@@ -180,7 +180,6 @@ def _populate_container(path: str, container: Any, values: Dict[str, Any]) -> No
         items = sorted(values.items(), key=lambda e: int(e[0]))
         container.extend(item[1] for item in items)
     elif isinstance(container, dict):
-        # pyre-ignore
         key_to_val: Dict[Union[str, int], Any] = {
             _decode(k): v for k, v in values.items()
         }

@@ -42,7 +42,6 @@ def _create_fsdp_model(
 @pytest.mark.skipif(
     not torch.cuda.is_available(), reason="The test requires GPUs to run."
 )
-# pyre-fixme[56]: Pyre was not able to infer the type of the decorator
 #  `pytest.mark.gpu_only`.
 @pytest.mark.gpu_only
 @pytest.mark.usefixtures("toggle_batching")

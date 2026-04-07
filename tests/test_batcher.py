@@ -111,7 +111,7 @@ def sharded_tensor_test_cases(
         - Write requests produced by ShardedTensorIOPreparer
         - dst tensors whose values are different from the src tensors
     """
-    spec = ChunkShardingSpec(  # pyre-ignore
+    spec = ChunkShardingSpec(
         dim=0,
         placements=[
             "rank:0/cpu",
@@ -315,9 +315,7 @@ async def test_batcher(
     Verify the behavior of the batcher.
     """
     src_tensors, entries, write_reqs, dst_tensors = (
-        # pyre-fixme[6]: For 1st argument expected `List[Tensor]` but got
         #  `Union[List[Entry], List[WriteReq], List[Tensor]]`.
-        # pyre-fixme[58]: `+` is not supported for operand types
         #  `List[torch._tensor.Tensor]` and `Union[List[Entry], List[WriteReq],
         #  List[torch._tensor.Tensor]]`.
         a + b + c

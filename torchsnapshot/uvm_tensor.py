@@ -25,13 +25,10 @@ except Exception:
 
 
 try:
-    # pyre-fixme[9]: new_managed_tensor has type `(t: Tensor, sizes: List[int]) ->
     #  Tensor`; used as `OpOverloadPacket`.
     new_managed_tensor = torch.ops.fbgemm.new_managed_tensor
-    # pyre-fixme[9]: is_uvm_tensor has type `(t: Tensor) -> bool`; used as
     #  `OpOverloadPacket`.
     is_uvm_tensor = torch.ops.fbgemm.is_uvm_tensor
-    # pyre-fixme[9]: uvm_to_cpu has type `(t: Tensor) -> Tensor`; used as
     #  `OpOverloadPacket`.
     uvm_to_cpu = torch.ops.fbgemm.uvm_to_cpu
 

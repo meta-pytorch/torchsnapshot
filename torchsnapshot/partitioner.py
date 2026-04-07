@@ -175,7 +175,9 @@ def _partition_replicated_write_reqs(
     if pg.get_rank() == 0:
         # Rank 0 performs the partitioning
         partition_result = _partition_write_loads(
+            # pyrefly: ignore [bad-argument-type]
             rank_to_entries=rank_to_entries,
+            # pyrefly: ignore [bad-argument-type]
             rank_to_write_loads=rank_to_write_loads,
             rank_to_size=list(rank_to_size),
             world_size=pg.get_world_size(),

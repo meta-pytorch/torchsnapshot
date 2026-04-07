@@ -36,7 +36,6 @@ def dummy_pg() -> Generator[None, None, None]:
 
 def sharding_specs() -> List[ShardingSpec]:
     specs: List[ShardingSpec] = [
-        # pyre-ignore
         ChunkShardingSpec(
             dim=dim,
             placements=[

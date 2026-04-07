@@ -48,7 +48,6 @@ class ReadObjectTest(unittest.TestCase):
         dist.init_process_group(backend="gloo")
         torch.manual_seed(42 + dist.get_rank())
 
-        # pyre-ignore [28]
         spec = ChunkShardingSpec(
             dim=0,
             placements=[f"rank:{rank}/cpu" for rank in range(dist.get_world_size())],
@@ -113,7 +112,6 @@ class ReadObjectTest(unittest.TestCase):
         dist.init_process_group(backend="gloo")
         torch.manual_seed(42 + dist.get_rank())
 
-        # pyre-ignore [28]
         spec = ChunkShardingSpec(
             dim=0,
             placements=[f"rank:{rank}/cpu" for rank in range(dist.get_world_size())],

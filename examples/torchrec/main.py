@@ -177,6 +177,7 @@ def train(work_dir: str, max_epochs: int, snapshot_path: Optional[str] = None) -
 
     # torchsnapshot: examine snapshot content
     if dist.get_rank() == 0:
+        # pyrefly: ignore [unbound-name]
         entries = snapshot.get_manifest()
         for path in entries.keys():
             print(path)

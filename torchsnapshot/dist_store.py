@@ -77,7 +77,9 @@ def create_store(pg_wrapper: PGWrapper) -> dist.Store:
     master_addr, master_port = obj_list[0], obj_list[1]
 
     store = dist.TCPStore(
+        # pyrefly: ignore [bad-argument-type]
         host_name=master_addr,
+        # pyrefly: ignore [bad-argument-type]
         port=master_port,
         world_size=pg_wrapper.get_world_size(),
         is_master=pg_wrapper.get_rank() == 0,

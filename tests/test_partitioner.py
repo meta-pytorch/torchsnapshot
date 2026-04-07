@@ -75,7 +75,6 @@ def _sharded_tensor_test_case(
     rank: int,
     replicated: bool,
 ) -> Tuple[ShardedTensor, Entry, List[WriteReq]]:
-    # pyre-ignore
     spec = ChunkShardingSpec(
         dim=0, placements=[f"rank:{rank}/cpu" for rank in range(dist.get_world_size())]
     )

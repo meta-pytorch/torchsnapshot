@@ -34,7 +34,6 @@ class S3StoragePlugin(StoragePlugin):
             )
         self.bucket: str = components[0]
         self.root: str = "/".join(components[1:])
-        # pyre-ignore
         # TODO: read AWS tokens from storage_options?
         self.session = get_session()
 

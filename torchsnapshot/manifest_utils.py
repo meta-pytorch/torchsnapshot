@@ -50,7 +50,6 @@ def is_fully_replicated_entry(entry: Entry) -> bool:
         return all(dims[0] == -1 for dims in entry.dim_map)
     if not hasattr(entry, "replicated"):
         return False
-    # pyre-ignore
     return entry.replicated
 
 

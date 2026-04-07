@@ -496,6 +496,7 @@ class Snapshot:
             )
         )
 
+        # pyrefly: ignore [bad-return]
         return fut.obj
 
     def get_manifest(self) -> Dict[str, Entry]:
@@ -677,7 +678,6 @@ class Snapshot:
                     f"Expected Stateful in app_state for key {key}, got {value_type}."
                 )
 
-    # pyre-fixme: inflate returns Dict[Any,Any]
     # Missing return annotation [3]: Return type must be specified as type that does not contain `Any`
     def get_state_dict_for_key(
         self, key: str, replicate_from_rank0: bool = False
@@ -776,7 +776,6 @@ class Snapshot:
             stateful.load_state_dict(state_dict)
 
     @staticmethod
-    # pyre-fixme: inflate returns Dict[Any,Any]
     # Missing return annotation [3]: Return type must be specified as type that does not contain `Any`
     def _get_state_dict_for_manifest(
         stateful_key: str,
@@ -911,7 +910,6 @@ class Snapshot:
 
     @staticmethod
     def _coalesce_replicated(global_replicated: List[List[str]]) -> Set[str]:
-        # pyre-fixme[6]: For 1st argument expected `(_T1) -> _S` but got `Type[set]`.
         verified_replicated = set.intersection(*map(set, global_replicated))
         return verified_replicated
 
@@ -973,7 +971,6 @@ class PendingSnapshot:
     ) -> None:
         self.path = path
         self.pg: Optional[dist.ProcessGroup] = pg_wrapper.pg
-        # pyre-ignore
         self.exc_info: Optional[Any] = None
         self._done = False
         self._storage_options = storage_options

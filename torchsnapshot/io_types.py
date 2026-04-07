@@ -17,7 +17,6 @@ from typing import Generic, Optional, Tuple, TypeVar, Union
 from .asyncio_utils import maybe_nested_loop
 
 
-# pyre-fixme[24]: Generic type `memoryview` expects 1 type parameter.
 BufferType = Union[bytes, memoryview]
 
 

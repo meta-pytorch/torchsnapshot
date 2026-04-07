@@ -116,10 +116,8 @@ def _patch_loop(loop: asyncio.AbstractEventLoop) -> None:
         """Do not throw exception if loop is already running."""
         pass
 
-    # pyre-fixme[8]: Attribute has type `(self: AbstractEventLoop) -> None`; used as
     #  `partial[typing.Any]`.
     loop.run_forever = functools.partial(run_forever, loop)
-    # pyre-fixme[8]: Attribute has type `(self: AbstractEventLoop, future:
     #  Union[Awaitable[Variable[_T]], Generator[typing.Any, None, Variable[_T]]]) ->
     #  _T`; used as `partial[typing.Any]`.
     loop.run_until_complete = functools.partial(run_until_complete, loop)

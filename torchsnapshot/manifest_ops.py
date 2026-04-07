@@ -124,6 +124,7 @@ def _get_merged_sharded_tensor_entries(
         sd_entries[logical_path] = ShardedTensorEntry(
             shards=shards,
         )
+    # pyrefly: ignore [bad-return]
     return sd_entries
 
 
@@ -172,6 +173,7 @@ def _get_merged_dtensor_entries(
             dim_map=group[0].dim_map,
             shards=shards,
         )
+    # pyrefly: ignore [bad-return]
     return sd_entries
 
 

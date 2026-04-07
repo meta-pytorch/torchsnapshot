@@ -70,9 +70,7 @@ class GCSStoragePlugin(StoragePlugin):
         self.bucket_name: str = components[0]
         self.root: str = "/".join(components[1:])
 
-        # pyre-ignore
         credentials, _ = default(scopes=self.SCOPES)
-        # pyre-ignore
         self.authed_session = AuthorizedSession(credentials)
         # https://github.com/googleapis/python-storage/issues/253
         adapter = requests.adapters.HTTPAdapter(
@@ -88,16 +86,13 @@ class GCSStoragePlugin(StoragePlugin):
     @staticmethod
     def _is_transient_error(e: Exception) -> bool:
         if (
-            # pyre-ignore
             isinstance(e, common.InvalidResponse)
-            # pyre-ignore
             and e.response.status_code in common.RETRYABLE
         ):
             return True
         return isinstance(
             e,
             (
-                # pyre-ignore
                 google.auth.exceptions.TransportError,
                 requests.exceptions.ConnectionError,
                 requests.exceptions.ChunkedEncodingError,
@@ -109,7 +104,6 @@ class GCSStoragePlugin(StoragePlugin):
 
     @staticmethod
     def _recover_resumable_upload(
-        # pyre-ignore
         upload: ResumableUpload,
         stream: io.BytesIO,
     ) -> None:
@@ -143,7 +137,6 @@ class GCSStoragePlugin(StoragePlugin):
         else:
             raise TypeError(f"Unrecognized buffer type: {type(write_io.buf)}")
 
-        # pyre-ignore
         upload = ResumableUpload(
             upload_url=self.UPLOAD_URL_TEMPLATE.format(bucket=self.bucket_name),
             chunk_size=_DEFAULT_CHUNK_SIZE_BYTE,
@@ -185,7 +178,6 @@ class GCSStoragePlugin(StoragePlugin):
             start = byte_range[0]
             end = byte_range[1] - 1  # ChunkedDownload's end argument is inclusive
 
-        # pyre-ignore
         download = ChunkedDownload(
             media_url=self.DOWNLOAD_URL_TEMPLATE.format(
                 bucket=self.bucket_name,
