@@ -113,6 +113,7 @@ def test_ddp_upscale(layer_shapes: List[List[int]], tmp_path: Path) -> None:
             path=str(tmp_path),
             app_state={"ddp": src_ddp, "optim": src_optim},
             replicated=["optim/**"],
+            # pyrefly: ignore [bad-argument-type]
             pg=sub_pg,
         )
 

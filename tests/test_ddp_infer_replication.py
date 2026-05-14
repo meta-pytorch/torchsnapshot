@@ -66,6 +66,7 @@ class DDPInferReplicatedTest(unittest.TestCase):
             model, ["module.0.bias", "module.0.weight"]
         )
         ddp_model = DDP(model)
+        # pyrefly: ignore [bad-assignment]
         app_state: Dict[str, Stateful] = {"ddp": ddp_model, "nonddp": model}
 
         inferred_replicated = Snapshot._infer_replicated(
@@ -92,6 +93,7 @@ class DDPInferReplicatedTest(unittest.TestCase):
             model, ["module.0.bias", "module.0.weight"]
         )
         ddp_model = DDP(model)
+        # pyrefly: ignore [bad-assignment]
         app_state: Dict[str, Stateful] = {"ddp": ddp_model, "nonddp": model}
         inferred_replicated = Snapshot._infer_replicated(
             replicated=replicated, app_state=app_state
