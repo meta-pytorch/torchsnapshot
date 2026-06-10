@@ -40,6 +40,7 @@ def toggle_chunking(
     if not request.param == "chunking_off":
         yield
         return
+    # pyrefly: ignore [incompatible-overload-residual]
     max_chunk_size_bytes = min(reduce(mul, ls) for ls in layer_shapes) * 4
     with override_max_chunk_size_bytes(max_chunk_size_bytes):
         yield

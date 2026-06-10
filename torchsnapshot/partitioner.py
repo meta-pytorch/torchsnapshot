@@ -206,9 +206,11 @@ def _partition_replicated_write_reqs(
             else:
                 new_entries[logical_path].chunks.append(chunk)
         else:
+            # pyrefly: ignore [unsupported-operation]
             new_entries[logical_path] = entry
         new_write_reqs[logical_path].append(write_reqs[logical_path][write_req_idx])
 
+    # pyrefly: ignore [bad-return]
     return new_entries, new_write_reqs
 
 

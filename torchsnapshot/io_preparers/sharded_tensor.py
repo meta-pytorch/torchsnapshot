@@ -58,6 +58,7 @@ class ShardedTensorIOPreparer:
             raise ValueError(
                 f"max_shard_sz_bytes must be a positive integer (got {max_shard_sz_bytes})."
             )
+        # pyrefly: ignore [incompatible-overload-residual]
         slice_sz = reduce(mul, sizes) // sizes[dim] * shard.element_size()
         chunk_length = max(math.floor(max_shard_sz_bytes / slice_sz), 1)
         n_chunks = math.ceil(sizes[dim] / chunk_length)
