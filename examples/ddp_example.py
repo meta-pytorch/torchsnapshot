@@ -64,6 +64,7 @@ def train(
     # pyrefly: ignore [bad-assignment]
     app_state: Dict[str, Stateful] = {
         "rng_state": torchsnapshot.RNGState(),
+        # pyrefly: ignore [bad-assignment]
         "model": ddp_model,
         "optim": optim,
         "progress": progress,
