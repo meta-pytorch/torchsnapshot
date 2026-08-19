@@ -61,7 +61,6 @@ def train(
     progress = torchsnapshot.StateDict(current_epoch=0)
 
     # torchsnapshot: define app state
-    # pyrefly: ignore [bad-assignment]
     app_state: Dict[str, Stateful] = {
         "rng_state": torchsnapshot.RNGState(),
         # pyrefly: ignore [bad-assignment]
