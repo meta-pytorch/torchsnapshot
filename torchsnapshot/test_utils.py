@@ -60,8 +60,8 @@ def tensor_eq(lhs: Union[torch.Tensor, ShardedTensor, DTensor], rhs: Any) -> boo
             return False
         if lhs.device_mesh != rhs.device_mesh:
             return False
-        lhs = lhs.redistribute(placements=[Replicate()])
-        rhs = rhs.redistribute(placements=[Replicate()])
+        lhs = lhs.redistribute(placements=[Replicate()] * lhs.device_mesh.ndim)
+        rhs = rhs.redistribute(placements=[Replicate()] * rhs.device_mesh.ndim)
         return torch.allclose(lhs.to_local(), rhs.to_local())
     elif isinstance(lhs, torch.Tensor):
         if lhs.dtype in SUPPORTED_QUANTIZED_DTYPES:
