@@ -66,7 +66,8 @@ def create_store(pg_wrapper: PGWrapper) -> dist.Store:
     if pg_wrapper.get_rank() == 0:
         # Find a free port
         sock = get_socket_with_port()
-        master_addr, master_port, _, _ = sock.getsockname()
+        address = sock.getsockname()
+        master_addr, master_port = address[0], address[1]
         sock.close()
         # Broadcast master address/port to peers
         obj_list = [master_addr, master_port]
