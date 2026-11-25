@@ -220,7 +220,7 @@ def _tensor_as_memoryview_via_untyped_storage(tensor: torch.Tensor) -> memoryvie
             "with contiguous tensors"
         )
     untyped_storage = contiguous_view_as_untyped_storage(tensor)
-    tensor = torch.empty((0))
+    tensor = torch.empty((0), dtype=torch.uint8, device="cpu")
     tensor.set_(untyped_storage)
     # pyre-fixme[6]: For 1st argument expected `Buffer` but got `ndarray[Any, Any]`.
     return memoryview(tensor.numpy()).cast("b")
@@ -241,7 +241,8 @@ def contiguous_view_as_untyped_storage(tensor: torch.Tensor) -> UntypedStorage:
     else:
         untyped_storage = tensor.storage().untyped()
     return untyped_storage[
-        tensor.storage_offset() * tensor.element_size() : tensor.storage_offset()
+        tensor.storage_offset()
+        * tensor.element_size() : tensor.storage_offset()
         * tensor.element_size()
         + tensor.nelement() * tensor.element_size()
     ]
@@ -348,7 +349,7 @@ def per_tensor_qtensor_from_bytes(
     qtensor = torch._empty_affine_quantized(
         (0), scale=scale, zero_point=zero_point, dtype=dtype
     )
-    storage = torch.FloatStorage.from_buffer(memoryview(data), byte_order="native")
+    storage = torch.ByteStorage.from_buffer(memoryview(data))
     if hasattr(storage, "_untyped"):
         # TODO: drop this once PyTorch 1.12 is no longer supported
         # https://github.com/pytorch/pytorch/pull/82438
@@ -462,7 +463,7 @@ def per_channel_qtensor_from_bytes(
         axis=axis,
         dtype=dtype,
     )
-    storage = torch.FloatStorage.from_buffer(memoryview(data), byte_order="native")
+    storage = torch.ByteStorage.from_buffer(memoryview(data))
     if hasattr(storage, "_untyped"):
         # TODO: drop this once PyTorch 1.12 is no longer supported
         # https://github.com/pytorch/pytorch/pull/82438
